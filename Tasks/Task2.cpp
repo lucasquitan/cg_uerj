@@ -5,54 +5,51 @@ using namespace std;
 
 void init(void);
 void display(void);
-void drawPoint(int x, int y);
+bool draw = false;
+
+GLint X, Y;
 
 void init(void) {
-    // Ligth background
     glClearColor(1, 1, 1, 1);
 
-    // Vizualization system
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity();
-    glOrtho (-1, 1, -1, 1, -1, 1);
+    gluOrtho2D(0.0, 600.0, 0.0, 600.0);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void display() {
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPointSize(50);
+
+    if (draw) {
+        glBegin(GL_POINTS);
+        glVertex2i(X, Y);
+        glEnd();
+    }
   glFlush();
 }
 
 // The point is not shown.
-void drawPoint(GLint x, GLint y) {
-    glBegin(GL_POINTS);
-        glColor3f(0.0f, 0.0f, 0.0f);
-        glPointSize(50);
-        glVertex2i(x, y);
-    glEnd();
-
-    cout << "Criado em: " << x << " / " << y << "\n";
-    glFlush();
-}
 
 void handleMouse(GLint button, GLint action, GLint x, GLint y) {
-    switch (button) {
-        case GLUT_LEFT_BUTTON: {
-            if (action == GLUT_UP) drawPoint(x,y);
-        }
-        case GLUT_RIGHT_BUTTON: {
-            break;
-        }
-        default: break;
+    if (button == GLUT_LEFT_BUTTON and action == GLUT_UP) {
+        X = x; Y = 600-y;
+        draw = true;
+    } else if (button == GLUT_RIGHT_BUTTON and action == GLUT_UP) {
+        glClearColor(1, 1, 1, 0); 
+        glClear(GL_COLOR_BUFFER_BIT);
+        draw = false;
     }
 
-    display();
+    glutPostRedisplay();
 }
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(500, 500);
-    glutInitWindowPosition(200, 200);
+    glutInitWindowSize(600, 600);
+    glutInitWindowPosition(10, 10);
     glutCreateWindow("Tarefa 2");
 
     init();
