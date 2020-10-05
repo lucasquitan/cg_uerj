@@ -1,0 +1,8 @@
+# gitignore file
+!.gitignore
+
+# except cpp files
+Tasks/*
+!Tasks/*.cpp
+Examples/*
+!Examples/*.cpp
