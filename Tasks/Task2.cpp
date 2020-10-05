@@ -30,14 +30,17 @@ void display() {
   glFlush();
 }
 
-// The point is not shown.
-
 void handleMouse(GLint button, GLint action, GLint x, GLint y) {
     if (button == GLUT_LEFT_BUTTON and action == GLUT_UP) {
         X = x; Y = 600-y;
+        /**
+         *  Quando eu clicava, caso eu deixasse apenas Y para criar o ponto,
+         *  no programa, ele era criado com um Y menor. A minha solucao foi essa. 
+         *  Espero que entenda ¯\_(ツ)_/¯
+         */
         draw = true;
     } else if (button == GLUT_RIGHT_BUTTON and action == GLUT_UP) {
-        glClearColor(1, 1, 1, 0); 
+        glClearColor(1, 1, 1, 1); 
         glClear(GL_COLOR_BUFFER_BIT);
         draw = false;
     }

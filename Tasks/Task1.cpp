@@ -20,7 +20,7 @@ void init(void) {
     // Vizualization system
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity();
-    glOrtho (-1, 1, -1, 1, -1, 1);
+    glOrtho(-1, 1, -1, 1, -1, 1);
 }
 
 void applyDark() {
@@ -105,8 +105,8 @@ void display() {
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(500, 500);
-    glutInitWindowSize(500, 500);
+    glutInitWindowSize(600, 600);
+    glutInitWindowPosition(10, 10);
     glutCreateWindow("Tarefa 1");
 
     init();
