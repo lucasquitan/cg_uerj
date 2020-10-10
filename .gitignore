@@ -3,6 +3,12 @@
 
 # except cpp files
 Tasks/*
-!Tasks/*.cpp
 Examples/*
+Tests/*
+
+!Tasks/*.cpp
+!Tasks/*.c
 !Examples/*.cpp
+!Examples/*.c
+!Tests/*.cpp
+!Tests/*.c
