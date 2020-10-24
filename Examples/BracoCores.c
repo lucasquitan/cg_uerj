@@ -52,7 +52,7 @@ void display(void)
 
     glTranslatef(1.0, 0.0, 0.0);              /* origin elbow to (1,0,0) */
     glRotatef((GLfloat)elbow, 0.0, 0.0, 1.0); /* rotation at z-exis (all elements in stack */
-    glTranslatef(1.0, 0.0, 0.0);              /* center object to  (1,0,0) */
+    glTranslatef(1.0, 0.0, 0.0);              /* center object to  (2,0,0) */
 
     /* creating elbow */
     glPushMatrix();
